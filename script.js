@@ -5,9 +5,7 @@
 //Сортировка чисел в порядке возрастания
 function sortArr (arr) {
     function compareNumeric(a, b) {
-        if (a > b) return 1;
-        if (a == b) return 0;
-        if (a < b) return -1;
+        return a - b;   
     }
     arr.sort(compareNumeric);
 };
@@ -20,9 +18,7 @@ console.log (array);
 //Сортировка чисел в порядке убывания
 function sortArrRew (arr) {
     function compareNumeric(a, b) {
-        if (a > b) return -1;
-        if (a == b) return 0;
-        if (a < b) return 1;
+        return b -a;
     }
     arr.sort(compareNumeric);
 };
@@ -47,8 +43,8 @@ function getMaxOfArray (arr) {
 
 //Проверка
 let arrayMathMax = [99,2,14,43,10,];
-let z = getMaxOfArray (arrayMathMax);
-console.log (z);
+let resultTask2Max = getMaxOfArray (arrayMathMax);
+console.log (resultTask2Max);
 
 //Поиск минимального значения массива
 function getMinOfArray (arr) {
@@ -63,15 +59,13 @@ function getMinOfArray (arr) {
 
 //Проверка
 let arrayMathMin = [99,2,14,43,10,];
-let y = getMinOfArray (arrayMathMin);
-console.log (y);
+let resultTask2Min = getMinOfArray (arrayMathMin);
+console.log (resultTask2Min);
 
 //ЗАДАНИЕ 3
 
 function palindrome (string) {
-    let array = string.split('');
-    let arrayRew = array.reverse();
-    let stringRew = arrayRew.join('');
+    let stringRew = string.split('').reverse().join('');
     if (string == stringRew) {
         return true;
     } else {
@@ -127,7 +121,7 @@ console.log(anagram("раз", "два"));
 
 //ЗАДАНИЕ 6
 
-function vowels (x) {
+/*function vowels (x) {
     let arr = x.split("");
     let y = arr.length;
     for (let i = 0; i < arr.length; i++){
@@ -146,7 +140,18 @@ function vowels (x) {
 };
 
 //Проверка
-vowels("reerseeereaurd");
+//vowels("reerseeereaurd");*/
+
+function vowels (x) {
+    let vowelsArr = x.split("").filter(function (elm) {
+       return (elm == 'a' || elm == 'e' || elm == 'i' || elm == 'o' || elm == 'u');
+    });
+    console.log(vowelsArr.length);
+};
+
+//Проверка
+vowels("reerseeiiiiereaurd");
+
 
 //ЗАДАНИЕ 7
 
@@ -208,18 +213,15 @@ console.log(replace(strReplace));
 //ЗАДАНИЕ 11
 
 function decade(day) {
-    if (day <= 0 || day > 31) {
+    if (day < 1 || day > 31) {
         return 'Некорректное число';
-    }
-    if (day <= 10) {
+    } else if (day <= 10) {
         return "Первая декада";
-    }
-    if (day <= 20) {
+    } else if (day <= 20) {
         return "Вторая декада";
-    }
-    if (day <= 31) {
+    } else {
         return "Третья декада";
-    }
+    }   
 };
 
 //Проверка
@@ -227,25 +229,21 @@ console.log(decade(24));
 
 //ЗАДАНИЕ 12
 function season(month) {
-    if (month <= 0 || month > 12) {
+    if (month < 1 || month > 12) {
         return "Некорректное число";
-    }
-    if (month === 1 || month === 2 || month === 12) {
+    } else if (month === 1 || month === 2 || month === 12) {
         return "Зима";
-    }
-    if (month >= 3 && month <= 5) {
+    } else if (month >= 3 && month <= 5) {
         return "Весна";
-    }
-    if (month >= 6 && month <= 8) {
+    } else if (month >= 6 && month <= 8) {
         return "Лето";
-    }
-    if (month >= 9 && month <= 11) {
+    } else {
         return "Осень";
     }
 };
 
 //Проверка
-console.log(season(8));
+console.log(season(10));
 
 
 
